@@ -20,6 +20,7 @@
 		240399CF1736AB09005371E5 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240399CD1736AB09005371E5 /* ViewController.xib */; };
 		240399D21736AB9B005371E5 /* ModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 240399D11736AB9B005371E5 /* ModelObject.m */; };
 		240399E51736B548005371E5 /* libReactiveCocoa-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 240399E11736B52F005371E5 /* libReactiveCocoa-iOS.a */; };
+		240399E81736B881005371E5 /* KVOSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 240399E71736B881005371E5 /* KVOSlider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		240399D01736AB9B005371E5 /* ModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObject.h; sourceTree = "<group>"; };
 		240399D11736AB9B005371E5 /* ModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelObject.m; sourceTree = "<group>"; };
 		240399D61736B52E005371E5 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
+		240399E61736B881005371E5 /* KVOSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVOSlider.h; sourceTree = "<group>"; };
+		240399E71736B881005371E5 /* KVOSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVOSlider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				240399CD1736AB09005371E5 /* ViewController.xib */,
 				240399D01736AB9B005371E5 /* ModelObject.h */,
 				240399D11736AB9B005371E5 /* ModelObject.m */,
+				240399E61736B881005371E5 /* KVOSlider.h */,
+				240399E71736B881005371E5 /* KVOSlider.m */,
 				240399B51736AAF7005371E5 /* Supporting Files */,
 			);
 			path = KVOBindingTest;
@@ -250,6 +255,7 @@
 				240399BF1736AAF7005371E5 /* AppDelegate.m in Sources */,
 				240399CE1736AB09005371E5 /* ViewController.m in Sources */,
 				240399D21736AB9B005371E5 /* ModelObject.m in Sources */,
+				240399E81736B881005371E5 /* KVOSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
