@@ -10,7 +10,6 @@
 #import "ModelObject.h"
 
 void* ViewControllerSliderContext = &ViewControllerSliderContext;
-void* ViewControllerObjectContext = &ViewControllerObjectContext;
 
 @interface ViewController ()
 @property (nonatomic, strong) ModelObject *modelObject;
@@ -32,30 +31,29 @@ void* ViewControllerObjectContext = &ViewControllerObjectContext;
 	[self.modelObject addObserver:self
 					   forKeyPath:@"value"
 						  options:NSKeyValueObservingOptionNew
-						  context:ViewControllerObjectContext];
+						  context:ViewControllerSliderContext];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
 					  ofObject:(id)object
 						change:(NSDictionary *)change
 					   context:(void *)context {
-	
-	NSLog(@"%@:%@ %@", self, NSStringFromSelector(_cmd), change);
-	
-	if (context == ViewControllerObjectContext) {
-		self.slider.value = self.modelObject.value;
+		
+	if (context != ViewControllerSliderContext) {
+		[super observeValueForKeyPath:keyPath
+							 ofObject:object
+							   change:change
+							  context:context];
 		return;
 	}
 	
-	if (context == ViewControllerSliderContext) {
-		self.modelObject.value = self.slider.value;
-		return;
-	}
+	float value = [[change objectForKey:@"new"] floatValue];
 	
-	[super observeValueForKeyPath:keyPath
-						 ofObject:object
-						   change:change
-						  context:context];
+	if (self.slider.value != value)
+		self.slider.value = value;
+	
+	if (self.modelObject.value != value)
+		self.modelObject.value = value;
 }
 
 @end
