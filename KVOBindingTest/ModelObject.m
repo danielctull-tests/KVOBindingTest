@@ -10,4 +10,9 @@
 
 @implementation ModelObject
 
+- (void)setValue:(float)value {
+	_value = value;
+	NSLog(@"%@:%@ %f", self, NSStringFromSelector(_cmd), value);
+}
+
 @end

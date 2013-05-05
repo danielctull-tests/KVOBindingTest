@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ModelObject.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 void* ViewControllerSliderContext = &ViewControllerSliderContext;
 
@@ -20,40 +21,9 @@ void* ViewControllerSliderContext = &ViewControllerSliderContext;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
 	self.modelObject = [ModelObject new];
-	
-	[self.slider addObserver:self
-				  forKeyPath:@"value"
-					 options:NSKeyValueObservingOptionNew
-					 context:ViewControllerSliderContext];
-	
-	[self.modelObject addObserver:self
-					   forKeyPath:@"value"
-						  options:NSKeyValueObservingOptionNew
-						  context:ViewControllerSliderContext];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath
-					  ofObject:(id)object
-						change:(NSDictionary *)change
-					   context:(void *)context {
-		
-	if (context != ViewControllerSliderContext) {
-		[super observeValueForKeyPath:keyPath
-							 ofObject:object
-							   change:change
-							  context:context];
-		return;
-	}
-	
-	float value = [[change objectForKey:@"new"] floatValue];
-	
-	if (self.slider.value != value)
-		self.slider.value = value;
-	
-	if (self.modelObject.value != value)
-		self.modelObject.value = value;
+	RAC(self.slider.value) = [RACAble(self.modelObject.value) distinctUntilChanged];
+	RAC(self.modelObject.value) = [RACAble(self.slider.value) distinctUntilChanged];
 }
 
 @end
